@@ -41,34 +41,44 @@ jobs:
           VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
         run: |
           echo "Checking environment variables..."
+          MISSING_VARS=()
           if [ -z "$VITE_FIREBASE_API_KEY" ]; then
-            echo "❌ VITE_FIREBASE_API_KEY is not set"
-            exit 1
+            echo "⚠️  VITE_FIREBASE_API_KEY is not set"
+            MISSING_VARS+=("VITE_FIREBASE_API_KEY")
           fi
           if [ -z "$VITE_FIREBASE_AUTH_DOMAIN" ]; then
-            echo "❌ VITE_FIREBASE_AUTH_DOMAIN is not set"
-            exit 1
+            echo "⚠️  VITE_FIREBASE_AUTH_DOMAIN is not set"
+            MISSING_VARS+=("VITE_FIREBASE_AUTH_DOMAIN")
           fi
           if [ -z "$VITE_FIREBASE_PROJECT_ID" ]; then
-            echo "❌ VITE_FIREBASE_PROJECT_ID is not set"
-            exit 1
+            echo "⚠️  VITE_FIREBASE_PROJECT_ID is not set"
+            MISSING_VARS+=("VITE_FIREBASE_PROJECT_ID")
           fi
           if [ -z "$VITE_FIREBASE_STORAGE_BUCKET" ]; then
-            echo "❌ VITE_FIREBASE_STORAGE_BUCKET is not set"
-            exit 1
+            echo "⚠️  VITE_FIREBASE_STORAGE_BUCKET is not set"
+            MISSING_VARS+=("VITE_FIREBASE_STORAGE_BUCKET")
           fi
           if [ -z "$VITE_FIREBASE_MESSAGING_SENDER_ID" ]; then
-            echo "❌ VITE_FIREBASE_MESSAGING_SENDER_ID is not set"
-            exit 1
+            echo "⚠️  VITE_FIREBASE_MESSAGING_SENDER_ID is not set"
+            MISSING_VARS+=("VITE_FIREBASE_MESSAGING_SENDER_ID")
           fi
           if [ -z "$VITE_FIREBASE_APP_ID" ]; then
-            echo "❌ VITE_FIREBASE_APP_ID is not set"
-            exit 1
+            echo "⚠️  VITE_FIREBASE_APP_ID is not set"
+            MISSING_VARS+=("VITE_FIREBASE_APP_ID")
           fi
-          echo "✅ All environment variables are set"
-          echo "API Key: ${VITE_FIREBASE_API_KEY:0:10}..."
-          echo "Auth Domain: $VITE_FIREBASE_AUTH_DOMAIN"
-          echo "Project ID: $VITE_FIREBASE_PROJECT_ID"
+          
+          if [ ${#MISSING_VARS[@]} -eq 0 ]; then
+            echo "✅ All environment variables are set"
+            echo "API Key: ${VITE_FIREBASE_API_KEY:0:10}..."
+            echo "Auth Domain: $VITE_FIREBASE_AUTH_DOMAIN"
+            echo "Project ID: $VITE_FIREBASE_PROJECT_ID"
+          else
+            echo "⚠️  WARNING: Some Firebase environment variables are missing:"
+            printf '   - %s\n' "${MISSING_VARS[@]}"
+            echo ""
+            echo "The site will still build, but Firebase features (authentication, database) will not work."
+            echo "To enable Firebase, add these secrets in: Settings > Secrets and variables > Actions"
+          fi
 
       - name: Build
         env:

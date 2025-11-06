@@ -184,7 +184,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }) {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const { login, signup, loginWithGoogle, resetPassword } = useAuth()
+  const { login, signup, loginWithGoogle, resetPassword, firebaseError, isFirebaseReady } = useAuth()
 
   // Validation functions
   const validateEmail = (email) => {
@@ -212,6 +212,12 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
+    
+    if (!isFirebaseReady) {
+      setError('Firebase is not configured. Please contact the administrator.')
+      return
+    }
+    
     setLoading(true)
 
     try {
@@ -412,6 +418,13 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }) {
         }}>
           {mode === 'signin' ? 'Sign In' : 'Create Account'}
         </h2>
+
+        {!isFirebaseReady && (
+          <CustomAlert 
+            message={firebaseError || 'Firebase is not configured. Authentication is currently unavailable. Please check that environment variables are set in GitHub Secrets (for GitHub Pages) or .env file (for local development).'}
+            type="error"
+          />
+        )}
 
         {error && (
           <CustomAlert 

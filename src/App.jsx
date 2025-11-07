@@ -4086,23 +4086,8 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                   >Sign Out</button>
                 </div>
               ) : (
-                <>
                   <button 
                     onClick={() => openAuthModal('signin')}
-                    style={{
-                      padding: '0.75rem 2rem',
-                      background: 'rgba(68,97,171,0.8)',
-                      border: '1px solid rgba(68,97,171,0.5)',
-                      borderRadius: '0.75rem',
-                      color: 'white',
-                      fontWeight: '600',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s',
-                      backdropFilter: 'blur(10px)'
-                    }}
-                  >Sign In</button>
-                  <button 
-                    onClick={() => openAuthModal('signup')}
                     style={{
                       padding: '0.75rem 2rem',
                       background: 'linear-gradient(135deg, #1ab1ce 0%, #4461ab 100%)',
@@ -4114,8 +4099,15 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                       transition: 'all 0.2s',
                       boxShadow: '0 10px 30px rgba(26,177,206,0.4)'
                     }}
-                  >Get Started</button>
-                </>
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.05)'
+                    e.currentTarget.style.boxShadow = '0 12px 35px rgba(26,177,206,0.5)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)'
+                    e.currentTarget.style.boxShadow = '0 10px 30px rgba(26,177,206,0.4)'
+                  }}
+                >Sign In/Sign Up</button>
               )}
             </div>
           </div>
@@ -4270,10 +4262,10 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
               backdropFilter: 'blur(20px)',
               boxShadow: '0 8px 32px rgba(26,177,206,0.2)'
             }}>
-              <div style={{
-                display: 'flex',
+            <div style={{
+              display: 'flex',
                 alignItems: 'center',
-                gap: '1rem',
+              gap: '1rem',
                 marginBottom: '1rem',
                 justifyContent: 'space-between'
               }}>
@@ -5649,12 +5641,15 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
       {/* Desktop Profile Section */}
       {activeSection === 'profile' && (
         <section style={{
-          padding: '4rem 2rem',
+          paddingTop: 'clamp(100px, 15vh, 160px)',
+          paddingBottom: '4rem',
+        paddingLeft: '2rem',
+        paddingRight: '2rem',
           maxWidth: '1280px',
           margin: '0 auto',
-          position: 'relative',
-          zIndex: 10
-        }}>
+        position: 'relative',
+        zIndex: 10
+      }}>
           <div style={{maxWidth: '900px', margin: '0 auto'}}>
             {profileSection === 'main' && (
               <>
@@ -5730,13 +5725,13 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
 
                 {/* Stats Summary */}
                 {currentUser && (
-                  <div style={{
-                    display: 'grid',
+          <div style={{
+            display: 'grid',
                     gridTemplateColumns: '1fr 1fr',
                     gap: '1.5rem',
                     marginBottom: '2rem'
                   }}>
-                    <div style={{
+              <div style={{
                       background: 'linear-gradient(135deg, rgba(26,177,206,0.15) 0%, rgba(68,97,171,0.15) 100%)',
                       border: '2px solid rgba(26,177,206,0.4)',
                       borderRadius: '1.5rem',
@@ -5749,7 +5744,7 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                     }}>
                       <div style={{
                         fontSize: '2.5rem',
-                        fontWeight: '900',
+                fontWeight: '900',
                         background: 'linear-gradient(135deg, #1ab1ce 0%, #4461ab 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
@@ -5757,9 +5752,9 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                         marginBottom: '0.75rem'
                       }}>
                         {userReports.length.toLocaleString()}
-                      </div>
+              </div>
                       <div style={{
-                        color: '#9ca3af',
+                color: '#9ca3af',
                         fontSize: '1rem',
                         fontWeight: '600',
                         display: 'flex',
@@ -5797,9 +5792,9 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                         color: '#9ca3af',
                         fontSize: '1rem',
                         fontWeight: '600',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                         gap: '0.5rem'
                       }}>
                         <FiCheckCircle />
@@ -6005,7 +6000,7 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                     style={{
                       background: 'transparent',
                       border: 'none',
-                      color: '#1ab1ce',
+                  color: '#1ab1ce',
                       fontSize: '1.5rem',
                       cursor: 'pointer',
                       padding: '0.5rem'
@@ -6048,16 +6043,16 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                           padding: '1.5rem',
                           backdropFilter: 'blur(20px)',
                           boxShadow: '0 4px 20px rgba(68,97,171,0.15)',
-                          transition: 'all 0.3s'
-                        }}
-                        onMouseEnter={(e) => {
+                  transition: 'all 0.3s'
+                }}
+                onMouseEnter={(e) => {
                           e.currentTarget.style.borderColor = '#4461ab'
                           e.currentTarget.style.transform = 'translateY(-2px)'
                           e.currentTarget.style.boxShadow = '0 8px 30px rgba(68,97,171,0.25)'
-                        }}
-                        onMouseLeave={(e) => {
+                }}
+                onMouseLeave={(e) => {
                           e.currentTarget.style.borderColor = 'rgba(68,97,171,0.4)'
-                          e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.transform = 'translateY(0)'
                           e.currentTarget.style.boxShadow = '0 4px 20px rgba(68,97,171,0.15)'
                         }}
                       >
@@ -6166,7 +6161,7 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                     style={{
                       background: 'transparent',
                       border: 'none',
-                      color: '#1ab1ce',
+                  color: '#1ab1ce',
                       fontSize: '1.5rem',
                       cursor: 'pointer',
                       padding: '0.5rem'
@@ -6244,11 +6239,11 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                       cursor: 'pointer',
                       fontSize: '1rem',
                       transition: 'all 0.2s'
-                    }}
-                    onMouseEnter={(e) => {
+                }}
+                onMouseEnter={(e) => {
                       e.currentTarget.style.background = 'rgba(196,18,98,0.3)'
-                    }}
-                    onMouseLeave={(e) => {
+                }}
+                onMouseLeave={(e) => {
                       e.currentTarget.style.background = 'rgba(196,18,98,0.2)'
                     }}
                   >
@@ -6313,7 +6308,7 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                     backdropFilter: 'blur(10px)'
                   }}>
                 <h3 style={{
-                      color: '#1ab1ce',
+                  color: '#1ab1ce',
                   fontWeight: '800',
                       fontSize: '1.25rem',
                   marginBottom: '1rem',
@@ -6386,19 +6381,19 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                         fontSize: '1rem',
                         cursor: 'pointer',
                         transition: 'all 0.2s'
-                      }}
-                      onMouseEnter={(e) => {
+                }}
+                onMouseEnter={(e) => {
                         e.currentTarget.style.transform = 'translateY(-2px)'
                         e.currentTarget.style.boxShadow = '0 8px 25px rgba(26,177,206,0.4)'
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'translateY(0)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)'
                         e.currentTarget.style.boxShadow = 'none'
-                      }}
+                }}
                     >
                       View Safety Tips →
                     </button>
-                  </div>
+              </div>
                 </div>
               </div>
             )}
@@ -6646,7 +6641,7 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                       e.currentTarget.style.transform = 'translateX(0)'
                     }}
                   >Check Number</button>
-                </li>
+                  </li>
                 <li>
                   <button
                     onClick={openReportFraudModal}
@@ -6768,7 +6763,7 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                       e.currentTarget.style.transform = 'translateX(0)'
                     }}
                   >About Us</button>
-                </li>
+                  </li>
                 <li>
                   <button
                     onClick={() => {
@@ -6843,7 +6838,7 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                       e.currentTarget.style.transform = 'translateX(0)'
                     }}
                   >Help Center</button>
-                </li>
+                  </li>
                 <li>
                   <button
                     onClick={() => setActiveSection('safety-tips')}

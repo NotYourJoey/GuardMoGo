@@ -6568,9 +6568,10 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
         <div style={{maxWidth: '1280px', margin: '0 auto'}}>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gridTemplateColumns: 'repeat(4, 1fr)',
             gap: '3rem',
-            marginBottom: '3rem'
+            marginBottom: '3rem',
+            minWidth: 0
           }}>
             {/* Brand Column */}
             <div>
@@ -6875,26 +6876,31 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1rem'
+            flexWrap: 'nowrap',
+            gap: '1rem',
+            overflow: 'hidden'
           }}>
             <p style={{
               color: '#6b7280',
               fontSize: '0.875rem',
-              margin: 0
+              margin: 0,
+              whiteSpace: 'nowrap',
+              flexShrink: 0
             }}>
               © {new Date().getFullYear()} GuardMoGo. All rights reserved.
             </p>
             <div style={{
               display: 'flex',
               gap: '2rem',
-              flexWrap: 'wrap'
+              flexWrap: 'nowrap',
+              flexShrink: 0
             }}>
               <a href="#" style={{
                 color: '#6b7280',
                 textDecoration: 'none',
                 fontSize: '0.875rem',
-                transition: 'color 0.2s'
+                transition: 'color 0.2s',
+                whiteSpace: 'nowrap'
               }}
               onMouseEnter={(e) => e.currentTarget.style.color = '#1ab1ce'}
               onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}
@@ -6903,7 +6909,8 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                 color: '#6b7280',
                 textDecoration: 'none',
                 fontSize: '0.875rem',
-                transition: 'color 0.2s'
+                transition: 'color 0.2s',
+                whiteSpace: 'nowrap'
               }}
               onMouseEnter={(e) => e.currentTarget.style.color = '#1ab1ce'}
               onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}
@@ -6912,7 +6919,8 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                 color: '#6b7280',
                 textDecoration: 'none',
                 fontSize: '0.875rem',
-                transition: 'color 0.2s'
+                transition: 'color 0.2s',
+                whiteSpace: 'nowrap'
               }}
               onMouseEnter={(e) => e.currentTarget.style.color = '#1ab1ce'}
               onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}

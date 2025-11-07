@@ -302,8 +302,10 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
       style={{
         minHeight: '100vh', 
         backgroundColor: '#0a0e1a', 
-        paddingBottom: '100px', 
-        overflowX: 'hidden'
+        paddingBottom: 'max(100px, calc(70px + env(safe-area-inset-bottom)))', 
+        overflowX: 'hidden',
+        paddingLeft: 'env(safe-area-inset-left)',
+        paddingRight: 'env(safe-area-inset-right)'
       }}
     >
       {/* Mobile Header */}
@@ -319,6 +321,9 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
           borderBottom: '1px solid rgba(68,97,171,0.3)',
           zIndex: 100,
           padding: '0.75rem 1rem',
+          paddingTop: 'max(0.75rem, env(safe-area-inset-top))',
+          paddingLeft: 'max(1rem, env(safe-area-inset-left))',
+          paddingRight: 'max(1rem, env(safe-area-inset-right))',
           transition: 'all 0.3s',
           minHeight: '70px',
           display: 'flex',
@@ -376,9 +381,12 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
         <div 
           style={{
             padding: '1.5rem 1rem', 
+            paddingLeft: 'max(1rem, env(safe-area-inset-left))',
+            paddingRight: 'max(1rem, env(safe-area-inset-right))',
             textAlign: 'center', 
             maxWidth: '100%', 
-            overflowX: 'hidden'
+            overflowX: 'hidden',
+            boxSizing: 'border-box'
           }}
         >
           <div style={{
@@ -436,11 +444,12 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
               background: 'linear-gradient(135deg, rgba(26,177,206,0.15) 0%, rgba(68,97,171,0.15) 100%)',
               border: '2px solid rgba(26,177,206,0.4)',
               borderRadius: '1.25rem',
-              padding: '1.25rem',
+              padding: '1rem',
             marginBottom: '1.5rem',
             backdropFilter: 'blur(20px)',
             width: '100%',
               maxWidth: '100%',
+              boxSizing: 'border-box',
               boxShadow: '0 8px 32px rgba(26,177,206,0.2)'
             }}>
               <div style={{
@@ -479,19 +488,27 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                 </div>
               </div>
               
-              <div style={{display: 'flex', gap: '0.75rem', alignItems: 'stretch'}}>
+              <div style={{
+                display: 'flex', 
+                gap: '0.5rem', 
+                alignItems: 'stretch',
+                flexWrap: 'nowrap',
+                width: '100%'
+              }}>
                 <div style={{
                   flex: 1,
                   position: 'relative',
                   display: 'flex',
-                  alignItems: 'center'
+                  alignItems: 'center',
+                  minWidth: 0
                 }}>
                   <FiSearch style={{
                     position: 'absolute',
-                    left: '0.875rem',
+                    left: '0.75rem',
                     color: '#9ca3af',
-                    fontSize: '1rem',
-                    pointerEvents: 'none'
+                    fontSize: '0.875rem',
+                    pointerEvents: 'none',
+                    zIndex: 1
                   }} />
               <input
                 type="tel"
@@ -504,8 +521,8 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                       }
                     }}
                 style={{
-                  flex: 1,
-                      padding: '0.875rem 0.875rem 0.875rem 2.75rem',
+                  width: '100%',
+                      padding: '0.75rem 0.75rem 0.75rem 2.5rem',
                       background: 'rgba(22,25,44,0.8)',
                       border: '2px solid rgba(68,97,171,0.3)',
                       borderRadius: '0.75rem',
@@ -513,7 +530,9 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                   color: '#e5e7eb',
                   fontSize: '0.875rem',
                       minWidth: 0,
-                      transition: 'all 0.2s'
+                      boxSizing: 'border-box',
+                      transition: 'all 0.2s',
+                      WebkitAppearance: 'none'
                     }}
                     onFocus={(e) => {
                       e.target.style.borderColor = '#1ab1ce'
@@ -529,7 +548,8 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                   onClick={handleSearch}
                   disabled={searchLoading}
                   style={{
-                    padding: '0.875rem 1.5rem',
+                    padding: '0.75rem',
+                    minWidth: '44px',
                     background: searchLoading 
                       ? 'rgba(68,97,171,0.5)' 
                       : 'linear-gradient(135deg, #1ab1ce 0%, #4461ab 100%)',
@@ -537,15 +557,17 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                     borderRadius: '0.75rem',
                     color: 'white',
                     fontWeight: '700',
-                    fontSize: '0.875rem',
+                    fontSize: '0.8125rem',
                     whiteSpace: 'nowrap',
                     cursor: searchLoading ? 'not-allowed' : 'pointer',
                     opacity: searchLoading ? 0.6 : 1,
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.5rem',
+                    justifyContent: 'center',
+                    gap: '0.375rem',
                     transition: 'all 0.2s',
-                    boxShadow: searchLoading ? 'none' : '0 4px 12px rgba(26,177,206,0.3)'
+                    boxShadow: searchLoading ? 'none' : '0 4px 12px rgba(26,177,206,0.3)',
+                    flexShrink: 0
                   }}
                   onMouseEnter={(e) => {
                     if (!searchLoading) {
@@ -562,13 +584,13 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                 >
                   {searchLoading ? (
                     <>
-                      <LoadingSpinner size={16} color="#ffffff" />
-                      <span>Searching...</span>
+                      <LoadingSpinner size={14} color="#ffffff" />
+                      <span className="search-button-text">Searching...</span>
                     </>
                   ) : (
                     <>
                       <FiSearch size={16} />
-                      <span>Search</span>
+                      <span className="search-button-text">Search</span>
                     </>
                   )}
                 </button>
@@ -693,24 +715,33 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
 
           {/* Quick Actions */}
           {!showSearch ? (
-          <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1.5rem'}}>
+          <div style={{
+            display: 'grid', 
+            gridTemplateColumns: '1fr 1fr', 
+            gap: '0.625rem', 
+            marginBottom: '1.5rem',
+            width: '100%',
+            boxSizing: 'border-box'
+          }}>
               <button 
                 onClick={handleCheckNumberClick}
                 style={{
-              padding: '1rem 0.75rem',
+              padding: '0.875rem 0.625rem',
               background: 'linear-gradient(135deg, #1ab1ce 0%, #4461ab 100%)',
               border: 'none',
               borderRadius: '0.875rem',
               color: 'white',
               fontWeight: '800',
-              fontSize: '0.875rem',
+              fontSize: '0.8125rem',
               boxShadow: '0 10px 30px rgba(26,177,206,0.4)',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '0.5rem',
-                  transition: 'all 0.2s'
+                  gap: '0.375rem',
+                  transition: 'all 0.2s',
+                  minWidth: 0,
+                  boxSizing: 'border-box'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)'
@@ -727,19 +758,21 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
               <button 
                 onClick={openReportFraudModal}
                 style={{
-              padding: '1rem 0.75rem',
+              padding: '0.875rem 0.625rem',
               background: 'transparent',
                   border: '2px solid #c41262',
               borderRadius: '0.875rem',
                   color: '#c41262',
               fontWeight: '800',
-              fontSize: '0.875rem',
+              fontSize: '0.8125rem',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '0.5rem',
-                  transition: 'all 0.2s'
+                  gap: '0.375rem',
+                  transition: 'all 0.2s',
+                  minWidth: 0,
+                  boxSizing: 'border-box'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = 'rgba(196,18,98,0.1)'
@@ -3616,13 +3649,15 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
         background: 'rgba(10,14,26,0.95)',
         backdropFilter: 'blur(20px)',
         borderTop: '1px solid rgba(68,97,171,0.3)',
-        padding: '0.625rem 0 0.875rem 0',
+        padding: '0.625rem 0 max(0.875rem, env(safe-area-inset-bottom)) 0',
+        paddingLeft: 'max(0, env(safe-area-inset-left))',
+        paddingRight: 'max(0, env(safe-area-inset-right))',
         zIndex: 100,
         display: 'flex',
         justifyContent: 'space-around',
         alignItems: 'center',
         boxShadow: '0 -5px 20px rgba(0,0,0,0.3)',
-        height: '70px',
+        minHeight: '70px',
         boxSizing: 'border-box'
       }}>
         {[

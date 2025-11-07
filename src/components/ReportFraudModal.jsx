@@ -508,8 +508,8 @@ export default function ReportFraudModal({ isOpen, onClose, onOpenAuth }) {
               value={number}
               onChange={handleNumberChange}
               placeholder={carrier !== 'Other' && CARRIER_PREFIXES[carrier] 
-                ? `e.g. ${CARRIER_PREFIXES[carrier][0]}4123456`
-                : "e.g. 0244123456"}
+                ? `${CARRIER_PREFIXES[carrier][0]}4123456`
+                : "0244123456"}
               style={{
                 width: '100%',
                 padding: '0.75rem',

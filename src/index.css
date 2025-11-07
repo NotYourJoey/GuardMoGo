@@ -118,3 +118,126 @@
     }
   }
 }
+
+/* Responsive styles for desktop layout */
+@media (max-width: 1024px) {
+  /* Desktop navigation adjustments */
+  nav {
+    padding: 0 1rem !important;
+  }
+  
+  nav button {
+    font-size: 0.875rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+  
+  /* Hero section adjustments */
+  section h1 {
+    font-size: clamp(2rem, 8vw, 6rem) !important;
+  }
+  
+  /* Search input responsive */
+  input[type="tel"] {
+    font-size: 0.875rem !important;
+    padding: 0.875rem 0.875rem 0.875rem 2.5rem !important;
+  }
+  
+  /* Button responsive */
+  button {
+    font-size: 0.875rem !important;
+    padding: 0.875rem 1.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hide desktop layout, show mobile */
+  .desktop-only {
+    display: none !important;
+  }
+  
+  /* Navigation adjustments */
+  nav {
+    padding: 0 0.75rem !important;
+  }
+  
+  nav > div {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    height: auto !important;
+    padding: 0.75rem 0 !important;
+  }
+  
+  /* Hero section */
+  section {
+    padding: 2rem 1rem !important;
+  }
+  
+  /* Search container */
+  .search-container {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* Search button full width on mobile */
+  .search-container button,
+  div[style*="flexWrap"] button {
+    width: 100% !important;
+    flex: 1 1 100% !important;
+  }
+  
+  /* Search input full width on mobile */
+  div[style*="flexWrap"] input {
+    flex: 1 1 100% !important;
+  }
+  
+  /* Cards grid */
+  .grid-cards {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Footer */
+  footer {
+    padding: 2rem 1rem !important;
+  }
+  
+  footer > div {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  nav {
+    padding: 0.5rem !important;
+  }
+  
+  section {
+    padding: 1.5rem 0.75rem !important;
+  }
+  
+  /* Text sizes */
+  h1 {
+    font-size: clamp(1.5rem, 6vw, 3rem) !important;
+  }
+  
+  h2 {
+    font-size: clamp(1.25rem, 5vw, 2rem) !important;
+  }
+  
+  p {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Buttons */
+  button {
+    font-size: 0.8125rem !important;
+    padding: 0.75rem 1rem !important;
+  }
+  
+  /* Inputs */
+  input {
+    font-size: 0.875rem !important;
+    padding: 0.75rem !important;
+  }
+}

@@ -30,31 +30,35 @@
 
   /* Transparent scrollbar styles */
   * {
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
+    scrollbar-width: none; /* Firefox - hide scrollbar */
+    -ms-overflow-style: none; /* IE and Edge - hide scrollbar */
   }
 
   *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 0px;
+    height: 0px;
+    background: transparent;
+    display: none;
   }
 
   *::-webkit-scrollbar-track {
     background: transparent;
+    display: none;
   }
 
   *::-webkit-scrollbar-thumb {
-    background: rgba(68, 97, 171, 0.3);
-    border-radius: 4px;
-    transition: background 0.2s;
-  }
-
-  *::-webkit-scrollbar-thumb:hover {
-    background: rgba(68, 97, 171, 0.5);
+    background: transparent;
+    display: none;
   }
 
   *::-webkit-scrollbar-corner {
     background: transparent;
+    display: none;
+  }
+
+  /* For iOS Safari */
+  * {
+    -webkit-overflow-scrolling: touch;
   }
 }
 

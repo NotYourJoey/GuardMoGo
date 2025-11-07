@@ -337,8 +337,22 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
             <span style={{color: '#c41262'}}>Go</span>
           </div>
           {currentUser ? (
-            <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-              <span style={{fontSize: '0.75rem', color: '#1ab1ce'}}>{currentUser.email}</span>
+            <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'nowrap'}}>
+              <span style={{
+                fontSize: '0.75rem', 
+                color: '#1ab1ce',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                maxWidth: '120px'
+              }}>
+                Hey {userProfile?.firstName 
+                  ? userProfile.firstName 
+                  : userProfile?.displayName?.split(' ')[0] 
+                  || currentUser.displayName?.split(' ')[0] 
+                  || currentUser.email?.split('@')[0] 
+                  || 'there'}, welcome
+              </span>
               <button 
                 onClick={logout}
                 style={{
@@ -350,7 +364,8 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                   fontWeight: '700',
                   fontSize: '0.75rem',
                   whiteSpace: 'nowrap',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  flexShrink: 0
                 }}
               >Sign Out</button>
             </div>

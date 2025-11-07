@@ -675,7 +675,7 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                         fontSize: '0.75rem',
                         marginBottom: '0.75rem'
                       }}>
-                        {searchResults.reportsCount || searchResults.reports.length} report(s) found
+                        {(searchResults.reportsCount || searchResults.reports.length).toLocaleString()} report(s) found
                       </div>
                       <div style={{
                         color: '#d1d5db',
@@ -1622,16 +1622,20 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                     background: 'radial-gradient(circle, rgba(68,97,171,0.15) 0%, transparent 70%)',
                     borderRadius: '50%'
                   }} />
-                  <div style={{position: 'relative', zIndex: 1}}>
+                  <div style={{position: 'relative', zIndex: 1, width: '100%', overflow: 'hidden'}}>
                     <div style={{
-                      fontSize: 'clamp(1.75rem, 5vw, 2.25rem)',
+                      fontSize: 'clamp(1.25rem, 4vw, 2rem)',
                       fontWeight: '900',
                       background: 'linear-gradient(135deg, #1ab1ce 0%, #4461ab 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
                       marginBottom: '0.5rem',
-                      lineHeight: '1.2'
+                      lineHeight: '1.2',
+                      wordBreak: 'break-word',
+                      overflowWrap: 'break-word',
+                      maxWidth: '100%',
+                      textAlign: 'center'
                     }}>
                       {dashboardStats?.totalReports ? dashboardStats.totalReports.toLocaleString() : '0'}
             </div>
@@ -1690,16 +1694,20 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                     background: 'radial-gradient(circle, rgba(68,97,171,0.15) 0%, transparent 70%)',
                     borderRadius: '50%'
                   }} />
-                  <div style={{position: 'relative', zIndex: 1}}>
+                  <div style={{position: 'relative', zIndex: 1, width: '100%', overflow: 'hidden'}}>
                     <div style={{
-                      fontSize: 'clamp(1.75rem, 5vw, 2.25rem)',
+                      fontSize: 'clamp(1.25rem, 4vw, 2rem)',
                       fontWeight: '900',
                       background: 'linear-gradient(135deg, #c41262 0%, #4461ab 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
                       marginBottom: '0.5rem',
-                      lineHeight: '1.2'
+                      lineHeight: '1.2',
+                      wordBreak: 'break-word',
+                      overflowWrap: 'break-word',
+                      maxWidth: '100%',
+                      textAlign: 'center'
                     }}>
                       {dashboardStats?.totalNumbers ? dashboardStats.totalNumbers.toLocaleString() : '0'}
                     </div>
@@ -1753,16 +1761,20 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                     background: 'radial-gradient(circle, rgba(26,177,206,0.2) 0%, transparent 70%)',
                     borderRadius: '50%'
                   }} />
-                  <div style={{position: 'relative', zIndex: 1}}>
+                  <div style={{position: 'relative', zIndex: 1, width: '100%', overflow: 'hidden'}}>
                     <div style={{
-                      fontSize: 'clamp(1.5rem, 4vw, 1.875rem)',
+                      fontSize: 'clamp(1.125rem, 3.5vw, 1.75rem)',
                       fontWeight: '900',
                       background: 'linear-gradient(135deg, #1ab1ce 0%, #4461ab 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
                       marginBottom: '0.5rem',
-                      lineHeight: '1.2'
+                      lineHeight: '1.2',
+                      wordBreak: 'break-word',
+                      overflowWrap: 'break-word',
+                      maxWidth: '100%',
+                      textAlign: 'center'
                     }}>
                       {dashboardStats?.activeReports ? dashboardStats.activeReports.toLocaleString() : '0'}
                     </div>
@@ -1812,18 +1824,22 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                     background: 'radial-gradient(circle, rgba(68,97,171,0.2) 0%, transparent 70%)',
                     borderRadius: '50%'
                   }} />
-                  <div style={{position: 'relative', zIndex: 1}}>
+                  <div style={{position: 'relative', zIndex: 1, width: '100%', overflow: 'hidden'}}>
                     <div style={{
-                      fontSize: 'clamp(1.5rem, 4vw, 1.875rem)',
+                        fontSize: 'clamp(1.125rem, 3.5vw, 1.75rem)',
                       fontWeight: '900',
                       background: 'linear-gradient(135deg, #4461ab 0%, #1ab1ce 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
                       marginBottom: '0.5rem',
-                      lineHeight: '1.2'
+                      lineHeight: '1.2',
+                      wordBreak: 'break-word',
+                      overflowWrap: 'break-word',
+                      maxWidth: '100%',
+                      textAlign: 'center'
                     }}>
-                      {topNumbers.length > 0 ? topNumbers.length : '0'}
+                      {topNumbers.length > 0 ? topNumbers.length.toLocaleString() : '0'}
                     </div>
                     <div style={{
                       color: '#9ca3af',
@@ -1934,7 +1950,13 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                     fontWeight: '700',
                               whiteSpace: 'nowrap'
                             }}>
-                              {item.reportsCount || 0} report{item.reportsCount !== 1 ? 's' : ''}
+                              <span style={{
+                                fontSize: 'clamp(0.625rem, 2vw, 0.6875rem)',
+                                wordBreak: 'break-word',
+                                overflowWrap: 'break-word'
+                              }}>
+                                {item.reportsCount || 0} report{item.reportsCount !== 1 ? 's' : ''}
+                              </span>
                             </span>
                 </div>
                           <div style={{
@@ -2131,14 +2153,17 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                       </span>
                       <span style={{
                         color: '#c41262',
-                        fontSize: '0.9375rem',
+                        fontSize: 'clamp(0.8125rem, 2.5vw, 0.9375rem)',
                         fontWeight: '800',
                         background: 'linear-gradient(135deg, #c41262 0%, #4461ab 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text'
+                        backgroundClip: 'text',
+                        wordBreak: 'break-word',
+                        overflowWrap: 'break-word',
+                        maxWidth: '100%'
                       }}>
-                        {topNumbers[0].reportsCount || 0}
+                        {(topNumbers[0]?.reportsCount || 0).toLocaleString()}
                       </span>
                     </div>
                   )}
@@ -2275,18 +2300,22 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                       background: 'radial-gradient(circle, rgba(26,177,206,0.2) 0%, transparent 70%)',
                       borderRadius: '50%'
                     }} />
-                    <div style={{position: 'relative', zIndex: 1}}>
+                    <div style={{position: 'relative', zIndex: 1, width: '100%', overflow: 'hidden'}}>
                       <div style={{
-                        fontSize: 'clamp(1.75rem, 5vw, 2.25rem)',
+                        fontSize: 'clamp(1.25rem, 4vw, 2rem)',
                         fontWeight: '900',
                         background: 'linear-gradient(135deg, #1ab1ce 0%, #4461ab 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',
                         marginBottom: '0.5rem',
-                        lineHeight: '1.2'
+                        lineHeight: '1.2',
+                        wordBreak: 'break-word',
+                        overflowWrap: 'break-word',
+                        maxWidth: '100%',
+                        textAlign: 'center'
                       }}>
-                        {userReports.length}
+                        {userReports.length.toLocaleString()}
                       </div>
                       <div style={{
                         color: '#9ca3af',
@@ -2334,18 +2363,22 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                       background: 'radial-gradient(circle, rgba(68,97,171,0.2) 0%, transparent 70%)',
                       borderRadius: '50%'
                     }} />
-                    <div style={{position: 'relative', zIndex: 1}}>
+                    <div style={{position: 'relative', zIndex: 1, width: '100%', overflow: 'hidden'}}>
                       <div style={{
-                        fontSize: 'clamp(1.75rem, 5vw, 2.25rem)',
+                        fontSize: 'clamp(1.25rem, 4vw, 2rem)',
                         fontWeight: '900',
                         background: 'linear-gradient(135deg, #4461ab 0%, #1ab1ce 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',
                         marginBottom: '0.5rem',
-                        lineHeight: '1.2'
+                        lineHeight: '1.2',
+                        wordBreak: 'break-word',
+                        overflowWrap: 'break-word',
+                        maxWidth: '100%',
+                        textAlign: 'center'
                       }}>
-                        {userReports.filter(r => r.status === 'active' || r.status === 'pending' || r.status === 'reviewed').length}
+                        {userReports.filter(r => r.status === 'active' || r.status === 'pending' || r.status === 'reviewed').length.toLocaleString()}
                       </div>
                       <div style={{
                         color: '#9ca3af',
@@ -3589,9 +3622,12 @@ function MobileLayout({ isScrolled, activeTab, setActiveTab, currentUser, userRo
                         </div>
                         <div style={{
                           color: '#9ca3af',
-                          fontSize: '0.75rem'
+                          fontSize: 'clamp(0.6875rem, 2vw, 0.75rem)',
+                          wordBreak: 'break-word',
+                          overflowWrap: 'break-word',
+                          maxWidth: '100%'
                         }}>
-                          {item.reportsCount || 0} report{item.reportsCount !== 1 ? 's' : ''}
+                          {(item.reportsCount || 0).toLocaleString()} report{item.reportsCount !== 1 ? 's' : ''}
                         </div>
                       </div>
                     </div>

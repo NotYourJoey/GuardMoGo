@@ -105,20 +105,29 @@ export default function ReportDetailsModal({ isOpen, onClose, number, reports, r
           <div style={{
             color: '#ffffff',
             fontWeight: '700',
-            fontSize: '1.25rem',
-            marginBottom: '0.5rem'
+            fontSize: 'clamp(1rem, 3vw, 1.25rem)',
+            marginBottom: '0.5rem',
+            wordBreak: 'break-all',
+            overflowWrap: 'break-word',
+            maxWidth: '100%'
           }}>
             {number}
           </div>
           <div style={{
             color: '#9ca3af',
-            fontSize: '0.875rem',
+            fontSize: 'clamp(0.75rem, 2.5vw, 0.875rem)',
             display: 'flex',
             alignItems: 'center',
-            gap: '0.5rem'
+            gap: '0.5rem',
+            flexWrap: 'wrap'
           }}>
-            <FiBarChart2 style={{display: 'inline-block', marginRight: '0.5rem'}} />
-            <span>Reported <strong style={{color: '#c41262'}}>{reportCount || reports.length}</strong> time{reportCount !== 1 ? 's' : ''}</span>
+            <FiBarChart2 style={{display: 'inline-block', marginRight: '0.5rem', flexShrink: 0}} />
+            <span>Reported <strong style={{
+              color: '#c41262',
+              fontSize: 'clamp(0.8125rem, 2.5vw, 0.9375rem)',
+              wordBreak: 'break-word',
+              overflowWrap: 'break-word'
+            }}>{(reportCount || reports.length).toLocaleString()}</strong> time{reportCount !== 1 ? 's' : ''}</span>
           </div>
         </div>
 
@@ -126,11 +135,13 @@ export default function ReportDetailsModal({ isOpen, onClose, number, reports, r
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <h3 style={{
             color: '#ffffff',
-            fontSize: '1rem',
+            fontSize: 'clamp(0.875rem, 2.5vw, 1rem)',
             fontWeight: '800',
-            marginBottom: '0.5rem'
+            marginBottom: '0.5rem',
+            wordBreak: 'break-word',
+            overflowWrap: 'break-word'
           }}>
-            All Reports ({reports.length})
+            All Reports ({reports.length.toLocaleString()})
           </h3>
           
           {reports.map((report, index) => (

@@ -27,6 +27,35 @@
       sans-serif;
     overflow-x: hidden;
   }
+
+  /* Transparent scrollbar styles */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: rgba(68, 97, 171, 0.3);
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: rgba(68, 97, 171, 0.5);
+  }
+
+  *::-webkit-scrollbar-corner {
+    background: transparent;
+  }
 }
 
 @layer utilities {

@@ -6601,7 +6601,9 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                 color: '#ffffff',
                 fontSize: '1.1rem',
                 fontWeight: '800',
-                marginBottom: '1.5rem'
+                marginBottom: '1.5rem',
+                marginTop: 0,
+                padding: 0
               }}>Features</h4>
               <ul style={{
                 listStyle: 'none',
@@ -6611,7 +6613,7 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                 flexDirection: 'column',
                 gap: '0.75rem'
               }}>
-                <li>
+                <li style={{padding: 0, margin: 0}}>
                   <button
                     onClick={() => {
                       setActiveSection('home')
@@ -6628,10 +6630,12 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                       textDecoration: 'none',
                       fontSize: '0.9rem',
                       transition: 'all 0.2s',
-                      display: 'inline-block',
+                      display: 'block',
                       cursor: 'pointer',
                       textAlign: 'left',
-                      padding: 0
+                      padding: 0,
+                      margin: 0,
+                      width: '100%'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#1ab1ce'
@@ -6653,10 +6657,12 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                       textDecoration: 'none',
                       fontSize: '0.9rem',
                       transition: 'all 0.2s',
-                      display: 'inline-block',
+                      display: 'block',
                       cursor: 'pointer',
                       textAlign: 'left',
-                      padding: 0
+                      padding: 0,
+                      margin: 0,
+                      width: '100%'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#1ab1ce'
@@ -6678,10 +6684,12 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                       textDecoration: 'none',
                       fontSize: '0.9rem',
                       transition: 'all 0.2s',
-                      display: 'inline-block',
+                      display: 'block',
                       cursor: 'pointer',
                       textAlign: 'left',
-                      padding: 0
+                      padding: 0,
+                      margin: 0,
+                      width: '100%'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#1ab1ce'
@@ -6703,10 +6711,12 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                       textDecoration: 'none',
                       fontSize: '0.9rem',
                       transition: 'all 0.2s',
-                      display: 'inline-block',
+                      display: 'block',
                       cursor: 'pointer',
                       textAlign: 'left',
-                      padding: 0
+                      padding: 0,
+                      margin: 0,
+                      width: '100%'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#1ab1ce'
@@ -6727,7 +6737,9 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                 color: '#ffffff',
                 fontSize: '1.1rem',
                 fontWeight: '800',
-                marginBottom: '1.5rem'
+                marginBottom: '1.5rem',
+                marginTop: 0,
+                padding: 0
               }}>Company</h4>
               <ul style={{
                 listStyle: 'none',
@@ -6737,7 +6749,7 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                 flexDirection: 'column',
                 gap: '0.75rem'
               }}>
-                <li>
+                <li style={{padding: 0, margin: 0}}>
                   <button
                     onClick={() => {
                       setActiveSection('profile')
@@ -6750,10 +6762,12 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                       textDecoration: 'none',
                       fontSize: '0.9rem',
                       transition: 'all 0.2s',
-                      display: 'inline-block',
+                      display: 'block',
                       cursor: 'pointer',
                       textAlign: 'left',
-                      padding: 0
+                      padding: 0,
+                      margin: 0,
+                      width: '100%'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#1ab1ce'
@@ -6778,10 +6792,12 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                       textDecoration: 'none',
                       fontSize: '0.9rem',
                       transition: 'all 0.2s',
-                      display: 'inline-block',
+                      display: 'block',
                       cursor: 'pointer',
                       textAlign: 'left',
-                      padding: 0
+                      padding: 0,
+                      margin: 0,
+                      width: '100%'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#1ab1ce'
@@ -6802,7 +6818,9 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                 color: '#ffffff',
                 fontSize: '1.1rem',
                 fontWeight: '800',
-                marginBottom: '1.5rem'
+                marginBottom: '1.5rem',
+                marginTop: 0,
+                padding: 0
               }}>Support</h4>
               <ul style={{
                 listStyle: 'none',
@@ -6812,7 +6830,7 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                 flexDirection: 'column',
                 gap: '0.75rem'
               }}>
-                <li>
+                <li style={{padding: 0, margin: 0}}>
                   <button
                     onClick={() => {
                       setActiveSection('profile')
@@ -6825,10 +6843,12 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                       textDecoration: 'none',
                       fontSize: '0.9rem',
                       transition: 'all 0.2s',
-                      display: 'inline-block',
+                      display: 'block',
                       cursor: 'pointer',
                       textAlign: 'left',
-                      padding: 0
+                      padding: 0,
+                      margin: 0,
+                      width: '100%'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#1ab1ce'
@@ -6850,10 +6870,12 @@ function DesktopLayout({ isScrolled, currentUser, userRole, userProfile, logout,
                       textDecoration: 'none',
                       fontSize: '0.9rem',
                       transition: 'all 0.2s',
-                      display: 'inline-block',
+                      display: 'block',
                       cursor: 'pointer',
                       textAlign: 'left',
-                      padding: 0
+                      padding: 0,
+                      margin: 0,
+                      width: '100%'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#1ab1ce'
